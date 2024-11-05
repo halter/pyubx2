@@ -78,12 +78,14 @@ U9 = "U009"  # Unsigned Int 9 bytes
 U10 = "U010"  # Unsigned Int 10 bytes
 U11 = "U011"  # Unsigned Int 11 bytes
 U12 = "U012"  # Unsigned Int 12 bytes
+U14 = "U014"  # Unsigned Int 14 bytes
 U15 = "U015"  # Unsigned Int 15 bytes
 U16 = "U016"  # Unsigned Int 16 bytes
 U20 = "U020"  # Unsigned Int 20 bytes
 U22 = "U022"  # Unsigned Int 22 bytes
 U23 = "U023"  # Unsigned Int 23 bytes
 U24 = "U024"  # Unsigned Int 24 bytes
+U27 = "U027"  # Unsigned Int 27 bytes
 U32 = "U032"  # Unsigned Int 32 bytes
 U40 = "U040"  # Unsigned Int 40 bytes
 U64 = "U064"  # Unsigned Int 64 bytes
@@ -184,6 +186,7 @@ UBX_MSGIDS = {
     b"\x06\x3b": "CFG-PM2",
     b"\x06\x86": "CFG-PMS",
     b"\x06\x00": "CFG-PRT",
+    b"\x06\x59": "CFG-PT2",
     b"\x06\x57": "CFG-PWR",
     b"\x06\x08": "CFG-RATE",
     b"\x06\x34": "CFG-RINV",
@@ -292,6 +295,7 @@ UBX_MSGIDS = {
     b"\x0a\x02": "MON-IO",  # deprecated, use MON-COMMS
     b"\x0a\x06": "MON-MSGPP",  # deprecated, use MON-COMMS
     b"\x0a\x27": "MON-PATCH",
+    b"\x0a\x2b": "MON-PT2",
     b"\x0a\x38": "MON-RF",
     b"\x0a\x07": "MON-RXBUF",  # deprecated, use MON-COMMS
     b"\x0a\x21": "MON-RXR",

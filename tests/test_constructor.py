@@ -11,7 +11,7 @@ Created on 21 Oct 2020
 
 import unittest
 
-from pyubx2 import UBXMessage, UBXReader, GET, SET, POLL
+from pyubx2 import UBXMessage, UBXReader, GET, SET, POLL, SETPOLL
 
 
 class FillTest(unittest.TestCase):
@@ -325,6 +325,25 @@ class FillTest(unittest.TestCase):
         )
         res2 = UBXMessage("NAV", "NAV-SBAS", GET, payload=res1.payload)
         self.assertEqual(str(res1), str(res2))
+
+    def testCFG_PT2(self):  # test CFG-PT2 constructor
+        res1 = UBXMessage("CFG", "CFG-PT2", SET,
+                          version=2, enable=1, lnaMode=0x2, extint=0x01, reAcqCno=25, refFreq=0x12345678, refFreqAcc=1234567,
+                          gnssId_01=1, svId_01=2, sigId_01=3, accsId_01=4
+                          )
+        encoded = res1.serialize()
+        self.assertEqual(encoded.hex(), "b56206590f000281017856341287d61200010203047f7a")
+        decoded = UBXReader.parse(encoded, msgmode=SETPOLL)
+        self.assertEqual(str(decoded), str(res1))
+
+    def testMON_PT2(self):  # test CFG-PT2 constructor
+        res1 = UBXMessage("MON", "MON-PT2", GET, numRfChn=2, numSvSigDesc=1)
+        encoded = res1.serialize()
+        self.assertEqual(encoded.hex(), "b5620a2b7200000002010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa3a")
+        decoded = UBXReader.parse(encoded, msgmode=GET)
+        print(str(decoded))
+        self.assertEqual(str(decoded), str(res1))
+
 
     def testCFG_TP5(self):  # test CFG-TP5 constructor
         res1 = UBXMessage("CFG", "CFG-TP5", POLL)
