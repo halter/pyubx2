@@ -235,6 +235,29 @@ UBX_PAYLOADS_SET = {
     "CFG-PM2": UBX_GET["CFG-PM2"],
     "CFG-PMS": UBX_GET["CFG-PMS"],
     "CFG-PRT": UBX_GET["CFG-PRT"],
+    "CFG-PT2": {
+        "version": U1,
+        "activate": (
+            X1,
+            {
+                "enable": U1,
+                "reserved0": U5,
+                "lnaMode": U2
+            }
+        ),
+        "extint": U1,
+        "refFreq": U4,
+        "refFreqAcc": U4,
+        "group": (
+            1,
+            {
+                "gnssId": U1,
+                "svId": U1,
+                "sigId": U1,
+                "accsId": U1
+            },
+        )
+    },
     "CFG-PWR": UBX_GET["CFG-PWR"],
     "CFG-RATE": UBX_GET["CFG-RATE"],
     "CFG-RINV": UBX_GET["CFG-RINV"],

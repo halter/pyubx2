@@ -57,7 +57,7 @@ from pyubx2.ubxtypes_core import (
     X1,
     X2,
     X4,
-    X24,
+    X24, U27, U14,
 )
 
 UBX_PAYLOADS_GET = {
@@ -1813,6 +1813,46 @@ UBX_PAYLOADS_GET = {
                 "patchData": U4,
             },
         ),
+    },
+    "MON-PT2": {
+        "version": U1,
+        "testMode": U1,
+        "numRfChn": U1,
+        "numSvSigDesc": U1,
+        "testRunTime": U4,
+        "clkDriftAid": I4,
+        "clkDriftTrk": I4,
+        "rtcFreq": U4,
+        "postStatus": U4,
+        "group": (
+            "numRfChn",
+            {
+                "rfPga": U1,
+                "reserved1": U27
+            }
+        ),
+        "satGroup": (
+            "numSvSigDesc", {
+                "gnssId": U1,
+                "svId": U1,
+                "sigId": U1,
+                "accsId": U1,
+                "cnoMin": U2,
+                "cnoMax": U2,
+                "reserved3": U14,
+                "carrPhDevMax": U1,
+                "signalInfo": (X1, {
+                    "ifChnIdValid": U1,
+                    "ifChnId": U2,
+                })
+            }
+        ),
+        "codeLockSuccess": U1,
+        "phaseLockSuccess": U1,
+        "minCodeLockTime": U2,
+        "maxCodeLockTime": U2,
+        "maxPhaseLockTime": U2,
+        "reserved4": U2
     },
     "MON-RF": {
         "version": U1,

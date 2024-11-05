@@ -75,6 +75,7 @@ UBX_PAYLOADS_POLL = {
     "CFG-NVS": {},
     "CFG-ODO": {},
     "CFG-PM2": {},
+    "CFG-PT2": {},
     "CFG-PM": {},
     "CFG-PMS": {},
     "CFG-PRT": {"portID": U1},
