@@ -241,11 +241,11 @@ UBX_PAYLOADS_SET = {
             X1,
             {
                 "enable": U1,
-                "reserved0": U5,
-                "lnaMode": U2
-            }
+                "lnaMode": U2,
+            },
         ),
         "extint": U1,
+        "reAcqCno": U1,
         "refFreq": U4,
         "refFreqAcc": U4,
         "sat_identifiers": (
@@ -254,9 +254,9 @@ UBX_PAYLOADS_SET = {
                 "gnssId": U1,
                 "svId": U1,
                 "sigId": U1,
-                "accsId": U1
+                "accsId": U1,
             },
-        )
+        ),
     },
     "CFG-PWR": UBX_GET["CFG-PWR"],
     "CFG-RATE": UBX_GET["CFG-RATE"],

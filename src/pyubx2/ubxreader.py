@@ -362,7 +362,7 @@ class UBXReader:
         msgmode: int = GET,
         validate: int = VALCKSUM,
         parsebitfield: bool = True,
-    ) -> object:
+    ) -> UBXMessage:
         """
         Parse UBX byte stream to UBXMessage object.
 

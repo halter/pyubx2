@@ -46,18 +46,20 @@ from pyubx2.ubxtypes_core import (
     U9,
     U10,
     U12,
+    U14,
     U15,
     U16,
     U20,
     U22,
     U23,
     U24,
+    U27,
     U32,
     U64,
     X1,
     X2,
     X4,
-    X24, U27, U14,
+    X24,
 )
 
 UBX_PAYLOADS_GET = {
@@ -1828,31 +1830,36 @@ UBX_PAYLOADS_GET = {
             "numRfChn",
             {
                 "rfPga": U1,
-                "reserved1": U27
-            }
+                "reserved0": U27,
+            },
         ),
         "satGroup": (
-            "numSvSigDesc", {
+            "numSvSigDesc",
+            {
                 "gnssId": U1,
                 "svId": U1,
                 "sigId": U1,
                 "accsId": U1,
                 "cnoMin": U2,
                 "cnoMax": U2,
-                "reserved3": U14,
-                "carrPhDevMax": U1,
-                "signalInfo": (X1, {
-                    "ifChnIdValid": U1,
-                    "ifChnId": U2,
-                })
-            }
+                "reserved1": U14,
+                "carrPhbDevMax": U1,
+                "signalInfo": (
+                    X1,
+                    {
+                        "ifChnIdValid": U1,
+                        "ifChnId": U2,
+                    },
+                ),
+                "codeLockSuccess": U1,
+                "phaseLockSuccess": U1,
+                "minCodeLockTime": U2,
+                "maxCodeLockTime": U2,
+                "minPhaseLockTime": U2,
+                "maxPhaseLockTime": U2,
+                "reserved2": U2,
+            },
         ),
-        "codeLockSuccess": U1,
-        "phaseLockSuccess": U1,
-        "minCodeLockTime": U2,
-        "maxCodeLockTime": U2,
-        "maxPhaseLockTime": U2,
-        "reserved4": U2
     },
     "MON-RF": {
         "version": U1,
