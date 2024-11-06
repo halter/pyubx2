@@ -248,8 +248,8 @@ UBX_PAYLOADS_SET = {
         "extint": U1,
         "refFreq": U4,
         "refFreqAcc": U4,
-        "group": (
-            1,
+        "sat_identifiers": (
+            "None",  # Dumb way of a group repeating 'n' times
             {
                 "gnssId": U1,
                 "svId": U1,

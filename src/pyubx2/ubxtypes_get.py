@@ -1824,7 +1824,7 @@ UBX_PAYLOADS_GET = {
         "clkDriftTrk": I4,
         "rtcFreq": U4,
         "postStatus": U4,
-        "group": (
+        "rfGroup": (
             "numRfChn",
             {
                 "rfPga": U1,
