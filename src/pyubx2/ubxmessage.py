@@ -298,7 +298,9 @@ class UBXMessage:
             # if individual keyword has been provided,
             # set to provided value, else set to
             # nominal value
-            val = kwargs.get(anami, nomval(adef))
+            val = kwargs.get(anam, nomval(adef))
+            if type(val) == list: # repeated groups use a list. Extract appropriate
+                val=val[index[0]-1]
             if ares == 1:
                 valb = val2bytes(val, adef)
             else:
@@ -481,7 +483,7 @@ class UBXMessage:
     def _calc_num_repeats(self, **kwargs) -> int:
         max_length = 0
         for value in kwargs.values():
-            if isinstance(value, list): # assume repeated groups are expressed in a list
+            if isinstance(value, list):
                 max_length = max(max_length, len(value))
         return max_length
 
