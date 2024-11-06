@@ -249,7 +249,7 @@ UBX_PAYLOADS_SET = {
         "refFreq": U4,
         "refFreqAcc": U4,
         "sat_identifiers": (
-            "None",  # Dumb way of a group repeating 'n' times
+            "None",
             {
                 "gnssId": U1,
                 "svId": U1,

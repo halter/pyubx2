@@ -224,7 +224,7 @@ class UBXMessage:
             if isinstance(anam, int):  # fixed number of repeats
                 gsiz = anam
             elif anam == "None":  # number of repeats 'variable by size'
-                gsiz = self._calc_num_repeats(gdict, self._payload, offset, 0)
+                gsiz = self._calc_num_repeats(**kwargs)
             else:  # number of repeats is defined in named attribute
                 gsiz = getattr(self, anam)
                 # special handling for ESF-MEAS message types
@@ -478,32 +478,12 @@ class UBXMessage:
                 "Check 'msgmode' setting is appropriate for data stream"
             ) from err
 
-    def _calc_num_repeats(
-        self, attd: dict, payload: bytes, offset: int, offsetend: int = 0
-    ) -> int:
-        """
-        Deduce number of items in 'variable by size' repeating group by
-        dividing length of remaining payload by length of group.
-
-        This is predicated on there being only one such repeating group
-        per message payload, which is true for all currently supported types.
-
-        :param dict attd: grouped attribute dictionary
-        :param bytes payload : raw payload
-        :param int offset: number of bytes in payload before repeating group
-        :param int offsetend: number of bytes in payload after repeating group
-        :return: number of repeats
-        :rtype: int
-
-        """
-
-        lenpayload = len(payload) - offset - offsetend
-        lengroup = 0
-        for _, val in attd.items():
-            if isinstance(val, tuple):
-                val, _ = val
-            lengroup += attsiz(val)
-        return int(lenpayload / lengroup)
+    def _calc_num_repeats(self, **kwargs) -> int:
+        max_length = 0
+        for value in kwargs.values():
+            if isinstance(value, list): # assume repeated groups are expressed in a list
+                max_length = max(max_length, len(value))
+        return max_length
 
     def __str__(self) -> str:
         """
