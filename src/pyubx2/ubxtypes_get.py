@@ -782,6 +782,9 @@ UBX_PAYLOADS_GET = {
         "cogLpGain": U1,
         "reserved3": U2,
     },
+    "CFG-OTP": {
+        "otpContent": A256
+    },
     "CFG-PM": {
         "version": U1,
         "reserved1": U1,

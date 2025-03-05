@@ -74,6 +74,7 @@ UBX_PAYLOADS_POLL = {
     "CFG-NMEA": {},
     "CFG-NVS": {},
     "CFG-ODO": {},
+    "CFG-OTP": {},
     "CFG-PM2": {},
     "CFG-PM": {},
     "CFG-PMS": {},
